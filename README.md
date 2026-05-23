@@ -8,34 +8,107 @@ All premium production licenses, multi-platform compiled binaries, and seat keys
 
 ---
 
-## 🛠️ Current Product Suite & Directory
-
-Each tool operates entirely client-side inside its own execution sandbox. Explore the designated product modules below for comprehensive technical setups, execution manuals, and engine metrics:
-vasudeval-labs/
-└── products/
-├── titan-ingest/  ---> [High-throughput 400 docs/sec RAG Ingestion Pipeline]
-└── titan-audio/   ---> [Ultra-low footprint 12MB RAM Whisper Audio Preprocessor]
+## 🛠️ Current Product Suite
 
 ### 📦 1. Titan-Ingest CLI
 * **Core Functionality:** Recursive documentation extraction, semantic section slicing, and clean row-by-row layout conversions for RAG vector databases.
 * **Performance:** Processes over 400 complex technical files per second using native Go concurrency workers.
-* **Documentation:** Detailed Quickstart & Enterprise commands can be found in the [Titan-Ingest Manual](./products/titan-ingest/README.md).
 * **Licensing:** [Unlock Premium Ingest Node Keys](https://polar.sh/dashboard/vasudeva-labs/products)
 
 ### 🔊 2. Titan-Audio CLI
 * **Core Functionality:** Direct-to-disk system codec streaming to automatically standardize batch media folders into high-fidelity 16,000 Hz Mono Linear PCM WAV structures ready for local Whisper AI deployment.
-* **Performance:** Maintains flat `< 13 MB` peak RAM utilization across massive input data pools at 24.6x real-time streaming velocity.
-* **Documentation:** Detailed Quickstart & Enterprise commands can be found in the [Titan-Audio Manual](./products/titan-audio/README.md).
+* **Performance:** Maintains flat < 13 MB peak RAM utilization across massive input data pools at 24.6x real-time streaming velocity.
 * **Licensing:** [Unlock Premium Audio Node Keys](https://polar.sh/dashboard/vasudeva-labs/products)
 
 ---
 
-## 🚀 Scaling Protocol for Future Implementations
+## 📖 Titan-Ingest CLI Execution Manual
 
-When adding a new high-performance micro-utility or platform module to this repository, adhere strictly to the following directory isolation strategy:
-1. Create a dedicated subdirectory under `products/your-new-engine/`.
-2. Construct an independent `README.md` inside that directory explicitly specifying the standalone local evaluation sandbox parameters, premium terminal configuration arguments, and the corresponding Polar store item link.
-3. Register the product entry on the index matrix above in this root file.
+Titan-Ingest is a zero-dependency, ultra-fast command-line ingestion engine that extracts, parses, and semantically chunks local documentation at scale. Running 100% locally on your machine terminal, it guarantees absolute data sovereignty while delivering raw, compiled machine performance.
+
+▶️ **[Watch the 60-Second Titan-Ingest 140x Performance Demo](https://youtu.be/aShsIDnLZRk)**
+
+### 📦 Key Features & Engine Metrics
+* **Blazing Throughput:** Processes 400+ complex technical documents per second recursively using native Go concurrent worker pool channels.
+* **Air-Gapped Privacy:** 100% client-side data operations. Zero cloud internet dependencies required—private intellectual property and source code never leave your firewalls.
+* **AI-Ready Structural Chunking:** Slices target data along semantic section boundaries and isolates tables row-by-row to ensure vector databases receive clean contexts, entirely preventing LLM hallucinations.
+* **Minimal Footprint:** Optimized executable file binary size (~3 MB) drawing under 50 MB of RAM peak allocation during massive directory stress trials.
+
+### 🚀 Cross-Platform Execution Manual
+
+#### 🆓 Running the Free Trial (Local Evaluation Sandbox)
+Leave the license flags blank to boot into Free Trial Mode. The application will run entirely locally, processing up to 20 files per run, with a maximum of 30 pages per file, restricted to flat folder paths.
+
+* **Linux Terminals:**
+  chmod +x ./titan-ingest
+  ./titan-ingest -in /path/to/your/flat_documents_folder
+
+* **macOS (Apple Silicon & Intel) Terminals:**
+  chmod +x ./titan-ingest
+  ./titan-ingest -in /path/to/your/flat_documents_folder
+
+* **Windows PowerShell:**
+  .\titan-ingest.exe -in "C:\Users\Username\Documents\FlatFolder"
+
+#### 🔑 Unlocking the Production Engine (With Premium License Key)
+Pass your issued Polar license parameters to unlock recursive nested sub-folder traversals, remove file caps, and register your hardware node seat.
+
+* **Linux Enterprise Execution:**
+  ./titan-ingest -in /home/user/docs -out /home/user/desktop/nodes.json -lic "POLAR_LICENSE_KEY" -org "YOUR_ORG_ID" -workers 4
+
+* **macOS Enterprise Execution:**
+  ./titan-ingest -in /Users/user/docs -out /Users/user/Desktop/nodes.json -lic "POLAR_LICENSE_KEY" -org "YOUR_ORG_ID" -workers 4
+
+* **Windows PowerShell Enterprise Execution:**
+  .\titan-ingest.exe -in "C:\Users\Name\Docs" -out "C:\Users\Name\Desktop\nodes.json" -lic "POLAR_LICENSE_KEY" -org "YOUR_ORG_ID" -workers 4
+
+⚠️ *Note: Engine validation locks onto hardware signatures to prevent unauthorized seat redistribution.*
+
+### 📥 Polar Provisioning Details
+Acquire your native cross-compiled executables (Linux amd64, Windows .exe, macOS Apple Silicon M1-M4, and Intel Legacy) immediately at checkout:
+👉 [Acquire Titan-Ingest Production Key & Binaries](https://polar.sh/dashboard/vasudeva-labs/products)
 
 ---
-*Built with absolute privacy, local efficiency, and compiled execution speed in mind.*
+
+## 🔊 Titan-Audio CLI Execution Manual
+
+Titan-Audio is a zero-dependency, local-first CLI tool written in pure Go designed to rapidly prepare large directories of mixed media files (.mp4, .mkv, .wav, .mp3, .m4a) for local AI frameworks like Whisper.
+
+Using optimized os/exec kernel streaming pipes, Titan-Audio keeps memory consumption low and flat (< 13 MB peak RAM), regardless of the input file size.
+
+▶️ **[Watch the Titan-Audio Structural Preprocessing Demo](https://youtu.be/PKY7JPWxfLI)**
+
+### ⚡ Verified Performance Metrics
+* Input Dataset Footprint: 101.35 MB
+* Peak Memory Allocation: 12.46 MB (Flat)
+* Core Engine Processing Velocity: 24.6x Real-Time Speed
+* Concurrency Model: Lock-Free Worker Pool
+
+### 🔥 Key Architectural Highlights
+* **Pure Go Implementation:** Completely self-contained binaries for Linux, Windows, and macOS.
+* **Stream Pipe Conversion:** Avoids memory leaks by streaming audio transformations directly to disk via system codecs.
+* **Automatic Audio Optimization:** Standardizes all inputs to native 16,000 Hz Mono Linear PCM WAV files with loudness normalization.
+* **Structured JSON Manifest Data:** Generates audio_manifest.json mapping original formats, precise durations, and calculated peak decibel metrics.
+
+### 🛠️ Quickstart Usage Manual
+
+Omit the license key to test the engine instantly in Free Trial Mode (processing limits applied), or pass your Polar key to unlock unlimited, recursive folder processing power:
+
+* **Linux Engine Command Line:**
+  chmod +x ./titan-audio-linux
+  ./titan-audio-linux -in ./your_media_dir -workers 4 -lic "PM_your_key"
+
+* **macOS (Bypassing Quarantine Gates):**
+  chmod +x ./titan-audio-mac
+  xattr -d com.apple.quarantine ./titan-audio-mac
+  ./titan-audio-mac -in ./your_media_dir -workers 4 -lic "PM_your_key"
+
+* **Windows (PowerShell Terminal Console):**
+  .\titan-audio-windows.exe -in "C:\your_media_dir" -workers 4 -lic "PM_your_key"
+
+### 📥 Polar Provisioning Details
+Download production binaries compiled explicitly for your host processor architecture and secure active hardware seats:
+👉 [Acquire Titan-Audio Production Key & Binaries](https://polar.sh/dashboard/vasudeva-labs/products)
+
+---
+*Built with absolute privacy, local efficiency, and compiled execution speed by Vasudeva Labs.*
