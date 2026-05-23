@@ -1,23 +1,25 @@
-# ⚡ Vasudeva Labs Tooling Ecosystem
+# ⚡ Local AI Data Ingestion & Preprocessing Engines (Go CLI Utilities)
 
-Welcome to the central command hub for **Vasudeva Labs** elite engineering utilities. We build ultra-fast, zero-dependency, local-first CLI data engines designed to eliminate heavy SaaS cloud overhead, guarantee absolute data sovereignty, and run under hyper-constrained local laptop hardware environments.
+Welcome to the central command hub for **Vasudeva Labs** elite engineering utilities. We build ultra-fast, zero-dependency, local-first command-line interface (CLI) data pipelines and parsing tools designed to eliminate heavy SaaS cloud API overhead, guarantee absolute air-gapped data sovereignty, and run with minimal resource footprint on local developer hardware.
 
-All premium production licenses, multi-platform compiled binaries, and seat keys are managed and distributed securely via Polar.
+All premium production licenses, cross-compiled binaries, and hardware node activation keys are managed and distributed securely via Polar.
 
-👉 **Acquire Production Licenses:** [Vasudeva Labs Polar Store](https://polar.sh/vasudeva-labs)
+👉 **Acquire Production Licenses & Executables:** [Vasudeva Labs Polar Store](https://polar.sh/vasudeva-labs)
 
 ---
 
-## 🛠️ Current Product Suite
+## 🛠️ Current Product Suite & Core Capabilities
 
-### 📦 1. Titan-Ingest CLI
-* **Core Functionality:** Recursive documentation extraction, semantic section slicing, and clean row-by-row layout conversions for RAG vector databases.
-* **Performance:** Processes over 400 complex technical files per second using native Go concurrency workers.
+### 📦 1. Titan-Ingest CLI (Local Document Parser & RAG Chunking Engine)
+* **Core Functionality:** High-throughput local PDF/Markdown parsing, structural layout extraction, and semantic text chunking for vector database embeddings.
+* **Performance Metric:** Processes 400+ complex technical documents per second natively via parallel Go channels under 50 MB RAM.
+* **Target SEO/Keywords:** RAG data preparation, document parser CLI, local chunking tool, unstructured data to JSON, table extraction pipeline.
 * **Licensing:** [Unlock Premium Ingest Node Keys](https://polar.sh/dashboard/vasudeva-labs/products)
 
-### 🔊 2. Titan-Audio CLI
-* **Core Functionality:** Direct-to-disk system codec streaming to automatically standardize batch media folders into high-fidelity 16,000 Hz Mono Linear PCM WAV structures ready for local Whisper AI deployment.
-* **Performance:** Maintains flat < 13 MB peak RAM utilization across massive input data pools at 24.6x real-time streaming velocity.
+### 🔊 2. Titan-Audio CLI (Local Media Stream Preprocessor for Whisper AI)
+* **Core Functionality:** Direct-to-disk system codec streaming to automatically standardize batch video and audio folders into 16,000 Hz Mono Linear PCM WAV structures.
+* **Performance Metric:** Maintains flat < 13 MB peak RAM allocation at 24.6x real-time streaming velocity.
+* **Target SEO/Keywords:** Whisper AI audio preprocessing, audio converter CLI, batch WAV audio optimizer, local media ingestion engine, Go audio processing.
 * **Licensing:** [Unlock Premium Audio Node Keys](https://polar.sh/dashboard/vasudeva-labs/products)
 
 ---
@@ -111,4 +113,4 @@ Download production binaries compiled explicitly for your host processor archite
 👉 [Acquire Titan-Audio Production Key & Binaries](https://polar.sh/dashboard/vasudeva-labs/products)
 
 ---
-*Built with absolute privacy, local efficiency, and compiled execution speed by Vasudeva Labs.*
+*Built for absolute privacy, local edge processing efficiency, and raw compiled execution speed by Vasudeva Labs.*
