@@ -22,11 +22,17 @@ All premium production licenses, cross-compiled binaries, and hardware node acti
 * **Target Keywords:** RAG data preparation, document parser CLI, local chunking tool, unstructured data to JSON, table extraction pipeline.
 * **Licensing:** [Unlock Premium Ingest Node Keys](https://polar.sh/vasudeva-labs)
 
-### 🔊 3. Titan-Audio CLI (Local Media Stream Preprocessor for Whisper AI)
+### 📦 3. Titan-Audio CLI (Local Media Stream Preprocessor for Whisper AI)
 * **Core Functionality:** Direct-to-disk system codec streaming to automatically standardize batch video and audio folders into 16,000 Hz Mono Linear PCM WAV structures.
 * **Performance Metric:** Maintains flat < 13 MB peak RAM allocation at 24.6x real-time streaming velocity.
 * **Target Keywords:** Whisper AI audio preprocessing, audio converter CLI, batch WAV audio optimizer, local media ingestion engine, Go audio processing.
 * **Licensing:** [Unlock Premium Audio Node Keys](https://polar.sh/vasudeva-labs)
+
+### 📦 4. Titan-Forge CLI (Token-Aware Semantic Slicer & Compliance Scrubber)
+* **Core Functionality:** Two-pass stream processor executing regular-expression PII scrubbing (emails, internal IPs, API secret tokens) on-the-fly, combined with layout-aware structural Markdown token slicing and rolling sliding-window context preservation.
+* **Performance Metric:** Executes 40,000 security redactions across a 100,000-line chaotic data stream and generates 4,000 token-bounded chunks in 2.09 seconds under a 73.44 MB RAM peak footprint.
+* **Target Keywords:** RAG security firewall, local PII scrubber CLI, token-aware chunking tool, cl100k_base tokenizer Go, air-gapped data compliance engine.
+* **Licensing:** [Unlock Premium Forge Node Keys](https://polar.sh/vasudeva-labs)
 
 ---
 
@@ -105,6 +111,34 @@ Using optimized os/exec kernel streaming pipes, Titan-Audio keeps memory consump
 #### 🔑 Premium Production Execution (Node-Locked Enterprise Mode)
 * **Linux / macOS:** `./titan-audio -in ./your_media_dir -workers 4 -lic "POLAR_LICENSE_KEY"`
 * **Windows PowerShell:** `.\titan-audio.exe -in "C:\your_media_dir" -workers 4 -lic "POLAR_LICENSE_KEY"`
+
+---
+
+## 🛠️ Titan-Forge CLI Execution Manual
+
+Titan-Forge is a zero-dependency, edge-first CLI pipeline engine built to act as an unbreachable local data security gate before document contents are routed to LLM vectors. It streams unstructured data through an inline PII regular-expression scrubbing layer while simultaneously calculating layout-aware chunk splits using a high-fidelity native BPE token estimation algorithm.
+
+▶️ **[Watch the 100K-Line 40,000-Redaction Titan-Forge Demo](https://youtu.be/ZKgoJdrQJIE)**
+
+### ⚡ Verified Benchmark Telemetry (Live Production Metrics)
+* **Source Intake Stream Depth:** 100,000 Lines (Concurrently Loaded)
+* **Dynamic Security Redactions:** 40,000 Assets (Emails, IPs, API Keys)
+* **Total Generated Token Chunks:** 4,000 Semantic JSON Blocks
+* **Execution Processing Time:** 2.093 Seconds
+* **Processing Stream Velocity:** 19,112 Redactions/Sec
+* **Peak Running RAM Baseline:** 73.44 MB (Strict Flat Streaming Memory Profile)
+
+### 🚀 Execution Syntax Reference
+
+#### 🆓 Free Trial Mode (Bypass Licensing)
+Omit the license flag to process the first 5 files and up to 10 chunks per file (appends promotional checkout watermark comments to output blocks).
+* **Linux / macOS:** `./titan-forge -in ./test_vault -out ./llm_ready_json/forge_chunks.json -size 500 -overlap 50`
+* **Windows PowerShell:** `.\titan-forge.exe -in .\test_vault -out .\llm_ready_json\forge_chunks.json -size 500 -overlap 50`
+
+#### 🔑 Premium Production Execution (Node-Locked Enterprise Mode)
+Pass your Polar key string parameter to completely lift file caps and unlock recursive deep directory tree traversals.
+* **Linux / macOS:** `./titan-forge -in /path/to/source_dir -out /path/to/output.json -size 500 -overlap 50 -lic "POLAR_LICENSE_KEY" -workers 4`
+* **Windows PowerShell:** `.\titan-forge.exe -in "C:\source_dir" -out "C:\output.json" -size 500 -overlap 50 -lic "POLAR_LICENSE_KEY" -workers 4`
 
 ---
 *Built for absolute privacy, local edge processing efficiency, and raw compiled execution speed by Vasudeva Labs.*
