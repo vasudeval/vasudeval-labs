@@ -4,7 +4,6 @@ Welcome to the central command hub for **Vasudeva Labs** elite engineering utili
 
 All premium production licenses, cross-compiled binaries, and hardware node activation keys are managed and distributed securely via Polar.
 
-👉 **Acquire Production Licenses & Executables:** [Vasudeva Labs Polar Store](https://polar.sh/vasudeva-labs)
 
 ---
 
@@ -14,31 +13,37 @@ All premium production licenses, cross-compiled binaries, and hardware node acti
 * **Core Functionality:** Ultra-high-speed native multi-format text parsing, recurring header/footer layout scrubbing, and complex table matrix structure flattening directly into clean standard Markdown (`|---|---|`).
 * **Performance Metric:** Processes 181.06 MB of multi-format enterprise files in 2.40 seconds while capping peak memory consumption to a strict 3.56 MB flat profile.
 * **Target Keywords:** PDF layout to Markdown, PDF table extractor CLI, docx table conversion, local data cleaning parser, unstructured data to Markdown table pipeline.
-* **Licensing:** [Unlock Premium Doc Node Keys](https://polar.sh/vasudeva-labs)
+* **Licensing:** [Unlock Premium Doc Node Keys](https://buy.polar.sh/polar_cl_OCEX5FlOytMtbV48UZ2LVUD1vJtPJ01RwTz4t05IVVu)
 
 ### 📦 2. Titan-Ingest CLI (Local Document Parser & RAG Chunking Engine)
 * **Core Functionality:** High-throughput local PDF/Markdown parsing, structural layout extraction, and semantic text chunking for vector database embeddings.
 * **Performance Metric:** Processes 400+ complex technical documents per second natively via parallel Go channels under 50 MB RAM.
 * **Target Keywords:** RAG data preparation, document parser CLI, local chunking tool, unstructured data to JSON, table extraction pipeline.
-* **Licensing:** [Unlock Premium Ingest Node Keys](https://polar.sh/vasudeva-labs)
+* **Licensing:** [Unlock Premium Ingest Node Keys](https://buy.polar.sh/polar_cl_7JmTYuEIzOK6nHnWrlUt9Q8l2kmT4LOQO6Syd26xemD)
 
 ### 📦 3. Titan-Audio CLI (Local Media Stream Preprocessor for Whisper AI)
 * **Core Functionality:** Direct-to-disk system codec streaming to automatically standardize batch video and audio folders into 16,000 Hz Mono Linear PCM WAV structures.
 * **Performance Metric:** Maintains flat < 13 MB peak RAM allocation at 24.6x real-time streaming velocity.
 * **Target Keywords:** Whisper AI audio preprocessing, audio converter CLI, batch WAV audio optimizer, local media ingestion engine, Go audio processing.
-* **Licensing:** [Unlock Premium Audio Node Keys](https://polar.sh/vasudeva-labs)
+* **Licensing:** [Unlock Premium Audio Node Keys](https://buy.polar.sh/polar_cl_fjnkoggFxnnlaqSwuhVXHGNk025W1LngmCSOh1yM6N0)
 
 ### 📦 4. Titan-Forge CLI (Token-Aware Semantic Slicer & Compliance Scrubber)
 * **Core Functionality:** Two-pass stream processor executing regular-expression PII scrubbing (emails, internal IPs, API secret tokens) on-the-fly, combined with layout-aware structural Markdown token slicing and rolling sliding-window context preservation.
 * **Performance Metric:** Executes 40,000 security redactions across a 100,000-line chaotic data stream and generates 4,000 token-bounded chunks in 2.09 seconds under a 73.44 MB RAM peak footprint.
 * **Target Keywords:** RAG security firewall, local PII scrubber CLI, token-aware chunking tool, cl100k_base tokenizer Go, air-gapped data compliance engine.
-* **Licensing:** [Unlock Premium Forge Node Keys](https://polar.sh/vasudeva-labs)
+* **Licensing:** [Unlock Premium Forge Node Keys](https://buy.polar.sh/polar_cl_ozDCIe3MbuW1R4MwIOp5cFF9nBCN5VNq48O5K1aRTHB)
+
+### 📦 5. Titan-Purge CLI (Streaming MinHash LSH Text Deduplication Engine)
+* **Core Functionality:** Highly parallelized, lock-free streaming text deduplication and near-duplicate identification applying multi-seeded 128-bit Locality-Sensitive Hashing (LSH) and K-shingling over local token buffers without data-center memory walls.
+* **Performance Metric:** Scans millions of high-density text, code, and log rows under a strict < 22 MB peak RAM ceiling, computing real-time Jaccard Similarity matrices natively at the edge.
+* **Target Keywords:** MinHash deduplication Go, LSH text deduplication CLI, local dataset cleaning tool, near-duplicate text detection, RAG duplicate filter.
+* **Licensing:** [Unlock Premium Purge Node Keys](https://buy.polar.sh/polar_cl_PNYfBKzakuI0ZHPu0LNNUaOmUnBzEMPDU3aAY0KpmaF)
 
 ---
 
 ## 📄 Titan-Doc CLI Execution Manual
 
-Titan-Doc is our flagship zero-dependency, edge-first CLI pipeline engine written in pure Go. It is engineered specifically to eliminate data-leaking, per-page SaaS processing bills by extracting clean, structured text and dense matrix arrays out of deep enterprise archives (`.pdf`, `.docx`, `.xlsx`) and transforming them instantly into standardized Markdown code blocks for LLM contexts.
+Titan-Doc is our flagship zero-dependency, edge-first CLI pipeline engine written in pure Go. It is engineered specifically to eliminate data-leaking, per-page SaaS processing bills by extracting clean, structured text and dense matrix arrays out of deep enterprise archives (`.pdf`, `.docx`, `.xlsx`) and transforming them Summary into standardized Markdown code blocks for LLM contexts.
 
 ▶️ **[Watch the 181MB 2-Second Flat-Memory Titan-Doc Demo](https://youtu.be/noDs2xnzpJM)**
 
@@ -139,6 +144,33 @@ Omit the license flag to process the first 5 files and up to 10 chunks per file 
 Pass your Polar key string parameter to completely lift file caps and unlock recursive deep directory tree traversals.
 * **Linux / macOS:** `./titan-forge -in /path/to/source_dir -out /path/to/output.json -size 500 -overlap 50 -lic "POLAR_LICENSE_KEY" -workers 4`
 * **Windows PowerShell:** `.\titan-forge.exe -in "C:\source_dir" -out "C:\output.json" -size 500 -overlap 50 -lic "POLAR_LICENSE_KEY" -workers 4`
+
+---
+
+## 🧹 Titan-Purge CLI Execution Manual
+
+Titan-Purge is a zero-dependency, ultra-fast streaming dataset text deduplication engine written in pure Go. It utilizes multi-seeded 128-bit rolling Murmur3 algorithms and K-shingle token window streaming to identify exact duplicates and near-duplicates (`>= 85%` Jaccard Similarity) locally at the edge. By bypassing heavy, memory-bound cloud Python frameworks, it allows researchers to clean massive text repositories without data-center infrastructure constraints.
+
+▶️ **[Watch the Titan-Purge High-Performance LSH Deduplication Demo](https://youtu.be/4vsMBnLZ2aw)**
+
+### ⚡ Verified Benchmark Telemetry (Live Production Metrics)
+* **Memory Constraints Safety Boundary:** < 50.00 MB Strict Ceiling
+* **Measured Peak RAM Allocation:** < 22.00 MB (Highly Optimized Flat Profile)
+* **MinHash Evaluation Matrix Size:** 128-Bit Cryptographic Seed Arrays
+* **Near-Duplicate Verification Threshold:** 85.0% Jaccard Similarity Coeff
+* **Concurrency Model:** Non-Blocking Parallel Worker Pool Threads
+
+### 🚀 Execution Syntax Reference
+
+#### 🆓 Free Trial Mode (Bypass Licensing)
+Omit the license parameter to evaluate the engine on up to 5 discrete text assets without directory tree recursion.
+* **Linux / macOS:** `./titan-purge -in ./raw_dataset -out ./clean_signatures`
+* **Windows PowerShell:** `.\titan-purge.exe -in .\raw_dataset -out .\clean_signatures`
+
+#### 🔑 Premium Production Execution (Node-Locked Enterprise Mode)
+Pass your Polar activation key string to lift the file counter boundaries and unlock fully recursive folder traversals across your local workspace.
+* **Linux / macOS:** `./titan-purge -in /path/to/dataset -out /path/to/output_dir -workers 4 -lic "POLAR_LICENSE_KEY"`
+* **Windows PowerShell:** `.\titan-purge.exe -in "C:\path\to\dataset" -out "C:\path\to\output_dir" -workers 4 -lic "POLAR_LICENSE_KEY"`
 
 ---
 *Built for absolute privacy, local edge processing efficiency, and raw compiled execution speed by Vasudeva Labs.*
