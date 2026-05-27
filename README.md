@@ -4,20 +4,20 @@ Six zero-dependency Go CLI tools for LLM data preprocessing. Run locally, no clo
 
 Built for developers who need to prepare documents, audio, and text datasets for LLM pipelines without paying per-page SaaS fees or fighting Python memory limits.
 
-**Website:** [vasudeval.com](https://vasudeval.com) | **Demo videos:** linked per tool below
+**Website:** [vasudeval.com](https://vasudeval.com) | **Licenses:** [Polar](https://vasudeval.com)
 
 ---
 
 ## Tools at a Glance
 
-| Tool | What it does | RAM | Speed |
+| Tool | What it does | Peak RAM | Speed |
 |---|---|---|---|
-| [Titan-Doc](#titan-doc) | PDF/DOCX/XLSX → clean Markdown | 3.56 MB heap | 75.30 MB/sec |
+| [Titan-Doc](#titan-doc) | PDF / DOCX / XLSX → clean Markdown | 3.56 MB heap | 75.30 MB/sec |
 | [Titan-Ingest](#titan-ingest) | Documents → chunked JSON for vector DBs | < 50 MB | 400+ docs/sec |
-| [Titan-Audio](#titan-audio) | Audio/video → Whisper-ready WAV | < 13 MB | 24.6x realtime |
+| [Titan-Audio](#titan-audio) | Audio / video → Whisper-ready WAV | < 13 MB | 24.6x realtime |
 | [Titan-Forge](#titan-forge) | Markdown → PII-scrubbed token chunks | 73.44 MB | 19,112 redactions/sec |
 | [Titan-Purge](#titan-purge) | Text datasets → deduplicated corpus | < 22 MB | 128-bit MinHash LSH |
-| [Titan-Shield](#titan-shield) | Local DLP proxy for AI API calls | 2.79 MB heap | ~95.50 MB/sec inspection |
+| [Titan-Shield](#titan-shield) | Local DLP proxy for outbound AI API calls | 2.79 MB heap | ~95.50 MB/sec |
 
 All tools:
 - Single static binary, no runtime dependencies
@@ -26,31 +26,26 @@ All tools:
 
 ---
 
-## Download
+## Download & Run
 
-Go to [Releases](https://github.com/vasudeval/vasudeval-labs/releases/latest) and download the binary for your platform.
+1. Go to [Releases](https://github.com/vasudeval/vasudeval-labs/releases/latest)
+2. Download the zip for your platform and tool
+3. Unzip and run
 
-**Linux (amd64)**
+**Linux / macOS:**
 ```bash
-curl -L https://github.com/vasudeval/vasudeval-labs/releases/latest/download/titan-doc-linux-amd64 -o titan-doc
+unzip titan-doc-linux-amd64.zip
 chmod +x titan-doc
 ./titan-doc -in ./test_files -out ./output
 ```
 
-**macOS (Apple Silicon)**
-```bash
-curl -L https://github.com/vasudeval/vasudeval-labs/releases/latest/download/titan-doc-darwin-arm64 -o titan-doc
-chmod +x titan-doc
-./titan-doc -in ./test_files -out ./output
-```
-
-**Windows (PowerShell)**
+**Windows:**
 ```powershell
-Invoke-WebRequest -Uri "https://github.com/vasudeval/vasudeval-labs/releases/latest/download/titan-doc-windows-amd64.exe" -OutFile "titan-doc.exe"
+# Unzip titan-doc-windows-amd64.zip, then:
 .\titan-doc.exe -in .\test_files -out .\output
 ```
 
-Replace `titan-doc` with the tool name you want (`titan-ingest`, `titan-audio`, etc.).
+Replace `titan-doc` with the tool you want: `titan-ingest`, `titan-audio`, `titan-forge`, `titan-purge`, `titan-shield`.
 
 ---
 
@@ -58,24 +53,26 @@ Replace `titan-doc` with the tool name you want (`titan-ingest`, `titan-audio`, 
 
 **PDF / DOCX / XLSX → clean Markdown**
 
-Extracts text and tables from document files into flat Markdown. Strips recurring headers, footers, and page numbers during extraction. Tables become standard `|---|---|` Markdown, not broken prose.
+Extracts text and tables from document files into flat Markdown. Strips recurring headers, footers, and page numbers inline during extraction. Dense spreadsheet tables become standard `|---|---|` Markdown, not broken prose.
 
-**Demo:** [Watch 181MB processed in 2.4 seconds](https://youtu.be/noDs2xnzpJM)
+Use this before feeding documents into any RAG pipeline or LLM context.
+
+**Demo:** [Watch 181 MB processed in 2.4 seconds](https://youtu.be/noDs2xnzpJM)
 
 ### Benchmarks
 
 | Metric | Value |
 |---|---|
-| Input processed | 181.06 MB (23 files: PDFs, DOCX, XLSX) |
+| Input | 181.06 MB — 23 files (PDFs, DOCX, XLSX) |
 | Output | 0.43 MB clean Markdown |
 | Duration | 2.40 seconds |
 | Throughput | 75.30 MB/sec |
 | Peak heap (HeapAlloc) | 3.56 MB |
 | Total system RAM | 18.15 MB |
 
-### Usage
+### Quickstart
 
-**Free trial** (no license needed — processes up to 3 pages/rows per file):
+**Free trial** — processes up to 3 pages or rows per file, no license needed:
 ```bash
 # Linux / macOS
 ./titan-doc -in ./test_files -out ./markdown_outputs
@@ -84,7 +81,7 @@ Extracts text and tables from document files into flat Markdown. Strips recurrin
 .\titan-doc.exe -in .\test_files -out .\markdown_outputs
 ```
 
-**Licensed** (unlimited files, recursive directories):
+**Licensed** — unlimited files, recursive directories:
 ```bash
 # Linux / macOS
 ./titan-doc -in /path/to/source_dir -out /path/to/output -lic "YOUR_KEY"
@@ -93,12 +90,15 @@ Extracts text and tables from document files into flat Markdown. Strips recurrin
 .\titan-doc.exe -in "C:\source_dir" -out "C:\output" -lic "YOUR_KEY"
 ```
 
-**[Get license key →](https://buy.polar.sh/polar_cl_OCEX5FlOytMtbV48UZ2LVUD1vJtPJ01RwTz4t05IVVu)**
+### Flags
 
-### Inputs / Outputs
+| Flag | Description |
+|---|---|
+| `-in` | Input directory (`.pdf`, `.docx`, `.xlsx`) |
+| `-out` | Output directory for `.md` files |
+| `-lic` | Polar license key (omit for trial) |
 
-- **Input:** Directory of `.pdf`, `.docx`, `.xlsx` files
-- **Output:** One `.md` file per document, tables preserved as Markdown
+**[Get license →](https://buy.polar.sh/polar_cl_OCEX5FlOytMtbV48UZ2LVUD1vJtPJ01RwTz4t05IVVu)**
 
 ---
 
@@ -106,7 +106,7 @@ Extracts text and tables from document files into flat Markdown. Strips recurrin
 
 **Documents → chunked JSON for vector databases**
 
-Parses PDF, HTML, and text files and splits them into semantic chunks for embedding. Splits at natural boundaries (headings, table rows) rather than fixed character counts. Outputs a single JSON file ready for ingestion into Pinecone, Weaviate, Chroma, or any vector DB.
+Parses PDF, HTML, and text files and splits them into semantic chunks ready for embedding. Splits at natural boundaries — headings, table rows — not fixed character counts. Outputs a single JSON file with chunks, source metadata, and a hash per chunk. Drop it directly into Pinecone, Weaviate, Chroma, or any vector DB ingestion pipeline.
 
 **Demo:** [Watch the 140x performance demo](https://youtu.be/aShsIDnLZRk)
 
@@ -118,9 +118,9 @@ Parses PDF, HTML, and text files and splits them into semantic chunks for embedd
 | Peak RAM | < 50 MB |
 | Concurrency | Lock-free parallel Go worker pool |
 
-### Usage
+### Quickstart
 
-**Free trial** (up to 20 files, 30 pages per file):
+**Free trial** — up to 20 files, 30 pages per file:
 ```bash
 # Linux / macOS
 ./titan-ingest -in /path/to/documents
@@ -138,12 +138,18 @@ Parses PDF, HTML, and text files and splits them into semantic chunks for embedd
 .\titan-ingest.exe -in "C:\docs" -out "C:\nodes.json" -workers 4 -lic "YOUR_KEY"
 ```
 
-**[Get license key →](https://buy.polar.sh/polar_cl_7JmTYuEIzOK6nHnWrlUt9Q8l2kmT4LOQO6Syd26xemD)**
+### Flags
 
-### Inputs / Outputs
+| Flag | Description | Default |
+|---|---|---|
+| `-in` | Input directory (`.pdf`, `.html`, `.txt`) | required |
+| `-out` | Output JSON path | `ingested_nodes.json` |
+| `-workers` | Parallel workers (licensed only) | 1 |
+| `-lic` | Polar license key | — |
 
-- **Input:** Directory of `.pdf`, `.html`, `.txt` files. Optional: `-workers N` to set concurrency.
-- **Output:** `ingested_nodes.json` — array of chunks with content, source metadata, and a hash per chunk.
+**Output structure:** `ingested_nodes.json` — array of chunks, each with content, source file, section heading, and a unique hash.
+
+**[Get license →](https://buy.polar.sh/polar_cl_7JmTYuEIzOK6nHnWrlUt9Q8l2kmT4LOQO6Syd26xemD)**
 
 ---
 
@@ -151,9 +157,12 @@ Parses PDF, HTML, and text files and splits them into semantic chunks for embedd
 
 **Audio and video → Whisper-ready WAV**
 
-Converts any mix of `.mp4`, `.mkv`, `.wav`, `.mp3`, `.m4a` files to 16kHz mono linear PCM WAV — the exact format Whisper expects. Runs FFmpeg as a kernel pipe (not a Python subprocess), keeping RAM flat regardless of input file size. Outputs a JSON manifest with per-file metrics (duration, peak dB, sample rate).
+Converts any mix of `.mp4`, `.mkv`, `.wav`, `.mp3`, `.m4a` files to 16kHz mono 16-bit linear PCM WAV — the exact format Whisper expects. Pipes directly through FFmpeg at the kernel level, so RAM stays flat regardless of how large the input files are. Outputs a JSON manifest with per-file stats: duration, peak dB, sample rate.
 
 **Demo:** [Watch the preprocessing demo](https://youtu.be/PKY7JPWxfLI)
+
+> **Requires FFmpeg on your system.**
+> Linux: `apt install ffmpeg` | macOS: `brew install ffmpeg` | Windows: [ffmpeg.org](https://ffmpeg.org/download.html)
 
 ### Benchmarks
 
@@ -164,11 +173,9 @@ Converts any mix of `.mp4`, `.mkv`, `.wav`, `.mp3`, `.m4a` files to 16kHz mono l
 | Processing speed | 24.6x realtime |
 | Concurrency | Lock-free worker pool |
 
-> **Note:** Requires FFmpeg installed on the system (`brew install ffmpeg` / `apt install ffmpeg`).
+### Quickstart
 
-### Usage
-
-**Free trial** (up to 5 files, 10 min/file max):
+**Free trial** — up to 5 files, 10 min per file max:
 ```bash
 # Linux / macOS
 ./titan-audio -in ./media_dir -out ./whisper_ready
@@ -186,22 +193,28 @@ Converts any mix of `.mp4`, `.mkv`, `.wav`, `.mp3`, `.m4a` files to 16kHz mono l
 .\titan-audio.exe -in "C:\media_dir" -workers 4 -lic "YOUR_KEY"
 ```
 
-**[Get license key →](https://buy.polar.sh/polar_cl_fjnkoggFxnnlaqSwuhVXHGNk025W1LngmCSOh1yM6N0)**
+### Flags
 
-### Inputs / Outputs
+| Flag | Description | Default |
+|---|---|---|
+| `-in` | Input directory of media files | required |
+| `-out` | Output directory for WAV files | required |
+| `-workers` | Parallel workers (licensed only) | 1 |
+| `-lic` | Polar license key | — |
 
-- **Input:** Directory of audio/video files (`.mp4`, `.mkv`, `.wav`, `.mp3`, `.m4a`)
-- **Output:** `.wav` files at 16kHz, mono, 16-bit PCM + `manifest.json` with per-file stats
+**Output:** `.wav` files at 16kHz mono 16-bit PCM + `manifest.json` with per-file duration, peak dB, and sample rate.
+
+**[Get license →](https://buy.polar.sh/polar_cl_fjnkoggFxnnlaqSwuhVXHGNk025W1LngmCSOh1yM6N0)**
 
 ---
 
 ## Titan-Forge
 
-**Markdown/text → PII-scrubbed, token-bounded JSON chunks**
+**Markdown / text → PII-scrubbed, token-bounded JSON chunks**
 
-Two-pass stream processor. First pass: regex scrubbing for emails, IP addresses, and API key patterns. Second pass: splits into token-bounded chunks with configurable size and overlap using a BPE-compatible tokenizer. Outputs chunks with parent heading context preserved.
+Two-pass stream processor. First pass scrubs emails, IP addresses, and API key patterns via precompiled regex. Second pass splits content into token-bounded chunks with configurable size and overlap, preserving the parent heading for each chunk. Everything runs locally — no data leaves the machine.
 
-Everything runs locally — no data leaves the machine.
+Use this before sending any internal documents into an LLM or vector database.
 
 **Demo:** [Watch 100K lines, 40K redactions in 2 seconds](https://youtu.be/ZKgoJdrQJIE)
 
@@ -210,15 +223,15 @@ Everything runs locally — no data leaves the machine.
 | Metric | Value |
 |---|---|
 | Input | 100,000 lines with 40,000 injected PII patterns |
-| Redactions | 40,000 (emails, IPs, API keys) |
+| Redactions executed | 40,000 (emails, IPs, API keys) |
 | Chunks generated | 4,000 token-bounded blocks |
 | Duration | 2.09 seconds |
 | Redaction rate | 19,112 redactions/sec |
 | Peak RAM | 73.44 MB |
 
-### Usage
+### Quickstart
 
-**Free trial** (5 files max, 10 chunks per file, watermark appended to output):
+**Free trial** — 5 files max, 10 chunks per file, watermark appended to output blocks:
 ```bash
 # Linux / macOS
 ./titan-forge -in ./test_vault -out ./chunks.json -size 500 -overlap 50
@@ -236,23 +249,20 @@ Everything runs locally — no data leaves the machine.
 .\titan-forge.exe -in "C:\source" -out "C:\output.json" -size 500 -overlap 50 -workers 4 -lic "YOUR_KEY"
 ```
 
-**Flags:**
+### Flags
 
 | Flag | Description | Default |
 |---|---|---|
-| `-in` | Input directory of `.md` or `.txt` files | required |
+| `-in` | Input directory (`.md`, `.txt`) | required |
 | `-out` | Output JSON file path | required |
 | `-size` | Max tokens per chunk | 500 |
 | `-overlap` | Token overlap between chunks | 50 |
 | `-workers` | Parallel workers (licensed only) | 1 |
 | `-lic` | Polar license key | — |
 
-**[Get license key →](https://buy.polar.sh/polar_cl_ozDCIe3MbuW1R4MwIOp5cFF9nBCN5VNq48O5K1aRTHB)**
+**Output:** `forge_chunks.json` — array of chunks with scrubbed content, token count, parent heading, and source file.
 
-### Inputs / Outputs
-
-- **Input:** Directory of `.md` or `.txt` files
-- **Output:** `forge_chunks.json` — array of chunks with scrubbed content, token count, parent heading, and source file
+**[Get license →](https://buy.polar.sh/polar_cl_ozDCIe3MbuW1R4MwIOp5cFF9nBCN5VNq48O5K1aRTHB)**
 
 ---
 
@@ -260,9 +270,9 @@ Everything runs locally — no data leaves the machine.
 
 **Text dataset deduplication using MinHash LSH**
 
-Computes 128-band MinHash signatures via Murmur3 for every file in a directory, then runs pairwise Jaccard similarity. Flags exact duplicates (100% match) and near-duplicates (≥ 85% similarity) in a JSON manifest. Operates entirely offline.
+Computes 128-band MinHash signatures via Murmur3 for every file in a directory, then runs pairwise Jaccard similarity comparison. Flags exact duplicates (100% match) and near-duplicates (≥ 85% similarity) in a JSON manifest. Runs entirely offline with no external dependencies.
 
-Use before building a vector index or fine-tuning dataset to avoid indexing redundant content.
+Run this before building a vector index or fine-tuning dataset to avoid indexing redundant content.
 
 **Demo:** [Watch the LSH deduplication demo](https://youtu.be/4vsMBnLZ2aw)
 
@@ -275,9 +285,9 @@ Use before building a vector index or fine-tuning dataset to avoid indexing redu
 | Similarity threshold | ≥ 85% Jaccard |
 | Concurrency | Non-blocking parallel worker pool |
 
-### Usage
+### Quickstart
 
-**Free trial** (up to 5 files, no directory recursion):
+**Free trial** — up to 5 files, no directory recursion:
 ```bash
 # Linux / macOS
 ./titan-purge -in ./raw_dataset -out ./signatures
@@ -295,12 +305,18 @@ Use before building a vector index or fine-tuning dataset to avoid indexing redu
 .\titan-purge.exe -in "C:\dataset" -out "C:\output" -workers 4 -lic "YOUR_KEY"
 ```
 
-**[Get license key →](https://buy.polar.sh/polar_cl_PNYfBKzakuI0ZHPu0LNNUaOmUnBzEMPDU3aAY0KpmaF)**
+### Flags
 
-### Inputs / Outputs
+| Flag | Description | Default |
+|---|---|---|
+| `-in` | Input directory (`.txt`, `.log`, `.json`, `.csv`, `.md`) | required |
+| `-out` | Output directory | required |
+| `-workers` | Parallel workers (licensed only) | 1 |
+| `-lic` | Polar license key | — |
 
-- **Input:** Directory of `.txt`, `.log`, `.json`, `.csv`, or `.md` files
-- **Output:** `purge_manifest.json` — duplicate pairs flagged with Jaccard scores, plus a deduplicated file list
+**Output:** `purge_manifest.json` — duplicate pairs with Jaccard scores, flagged as exact or near-duplicate, plus a clean deduplicated file list.
+
+**[Get license →](https://buy.polar.sh/polar_cl_PNYfBKzakuI0ZHPu0LNNUaOmUnBzEMPDU3aAY0KpmaF)**
 
 ---
 
@@ -308,9 +324,9 @@ Use before building a vector index or fine-tuning dataset to avoid indexing redu
 
 **Local reverse proxy that scrubs sensitive data from outbound AI API calls**
 
-Sits between your application and any LLM API endpoint (OpenAI, Anthropic, etc.). Inspects the JSON payload, applies regex rules against field values, and either redacts matched patterns before forwarding or blocks the request entirely with a 403. Sub-millisecond inspection. All rules and logs stay local.
+Sits between your application and any LLM API endpoint (OpenAI, Anthropic, etc.). Inspects the outbound JSON payload, applies regex rules against field values, and either redacts matched patterns before forwarding or blocks the request with a 403. All rules and audit logs stay local. Sub-millisecond inspection latency.
 
-Useful for teams where developers are sending internal code, credentials, or customer data to hosted AI endpoints.
+Useful when developers are sending internal code, credentials, or customer data to hosted AI endpoints and you need a local enforcement layer without a heavy enterprise proxy.
 
 **Demo:** [Watch the proxy demo](https://youtu.be/eLQQdQ6Njh8)
 
@@ -322,9 +338,9 @@ Useful for teams where developers are sending internal code, credentials, or cus
 | Peak heap (HeapAlloc) | 2.79 MB |
 | Total system RAM | 13.29 MB |
 
-### Usage
+### Quickstart
 
-**Free trial** (50 requests/day):
+**Free trial** — 50 requests/day:
 ```bash
 # Linux / macOS
 ./titan-shield -port 8080 -block=true
@@ -342,25 +358,34 @@ Useful for teams where developers are sending internal code, credentials, or cus
 .\titan-shield.exe -port 8080 -block=true -lic "YOUR_KEY"
 ```
 
-Point your app at `http://localhost:8080` instead of the AI endpoint directly. Titan-Shield forwards clean requests to the real endpoint.
+Point your application at `http://localhost:8080` instead of the AI endpoint directly. Titan-Shield inspects, scrubs, and forwards clean requests.
 
-**[Get license key →](https://buy.polar.sh/polar_cl_3N2hZ4KUDkX8CahsKSAdYJ7TwRggvXJctLUUJ2yvO4V)**
+### Flags
 
-### Inputs / Outputs
+| Flag | Description | Default |
+|---|---|---|
+| `-port` | Local port to listen on | 8080 |
+| `-block` | Block requests that match rules (vs redact-and-forward) | false |
+| `-lic` | Polar license key | — |
 
-- **Input:** Outbound JSON API requests on the configured local port, plus a rules file defining patterns to block/redact
-- **Output:** Sanitized request forwarded to target endpoint, or 403 response with local audit log entry
+**Output:** Sanitized request forwarded to target endpoint, or 403 with a local audit log entry.
+
+**[Get license →](https://buy.polar.sh/polar_cl_3N2hZ4KUDkX8CahsKSAdYJ7TwRggvXJctLUUJ2yvO4V)**
 
 ---
 
 ## Why Go binaries
 
-Python-based alternatives (LangChain loaders, pydub, pandas dedup scripts) load entire datasets into memory and run single-threaded. These tools stream data through worker pools and stay under 80 MB RAM regardless of input size. No pip install, no venv, no dependency conflicts — download and run.
+Python-based alternatives (LangChain loaders, pydub, pandas dedup scripts) load entire datasets into memory and run single-threaded. These tools stream data through concurrent worker pools and stay under 80 MB RAM regardless of input size. No `pip install`, no virtualenv, no dependency conflicts. Download, unzip, run.
+
+---
+
+## Feedback & Bug Reports
+
+Open an [issue on GitHub](https://github.com/vasudeval/vasudeval-labs/issues) or visit [vasudeval.com](https://vasudeval.com).
 
 ---
 
 ## License
 
-Free trial binaries are available without a key. Production use requires a node-locked license from [Polar](https://vasudeval.com).
-
-Each license is tied to one machine. [Contact](https://vasudeval.com) for multi-seat or team pricing.
+Free trial binaries run without a key. Production use requires a node-locked license from [Polar](https://vasudeval.com). Each license is tied to one machine.
